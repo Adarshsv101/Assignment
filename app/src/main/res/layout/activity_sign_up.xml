@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignUp"
+    android:background="@drawable/background"
    >
     <TextView
         android:id="@+id/txtSgnUp"
@@ -15,7 +16,7 @@
         android:textSize="50sp"
         android:padding="30dp"
         android:fontFamily="serif"
-        android:textColor="@color/purple_500"
+        android:textColor="#7741C5"
         />
     <LinearLayout
         android:id="@+id/ll2"
@@ -31,12 +32,13 @@
         android:padding="20dp"
         android:layout_margin="15dp"
         android:hint="Enter your email"
-        android:inputType="textEmailAddress"/>
+        android:inputType="textEmailAddress" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true">
+            app:passwordToggleEnabled="true"
+            app:boxBackgroundMode="none">
 
         <EditText
             android:id="@+id/etPassword1"
@@ -52,7 +54,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true">
+            app:passwordToggleEnabled="true"
+            app:boxBackgroundMode="none">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etConfirmPassword"

@@ -19,6 +19,9 @@ class MainActivityViewModel : ViewModel() {
         val retroInstance=RetroInstance.getRetroInstance().create(ApiInterface:: class.java)
         val call = retroInstance.getUsersList()
         call.enqueue(object: Callback<UserList> {
+            //Retrofit will download and parse the API data on a background thread,
+            // then deliver the results back to the UI thread via the onResponse or onFailure method.
+
             override fun onFailure(call: Call<UserList>, t:Throwable){
                 recyclerListData.postValue(null)
             }

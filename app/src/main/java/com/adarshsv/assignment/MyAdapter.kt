@@ -9,21 +9,17 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
 
-
+    /*Bridge between ui component and data souce*/
     class MyAdapter : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
         var userList = mutableListOf<User>()
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.items, parent, false)
         val holder = ViewHolder(v)
-        /*holder.name = v.findViewById<TextView>(R.id.name)
-        holder.email = v.findViewById<TextView>(R.id.email)
-        holder.status = v.findViewById<TextView>(R.id.status)*/
         return ViewHolder(v)
     }
-
+    /*Instead of creating new view for each new row, an old view is recycled and reused by binding new data to it*/
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.name.text = userList[position].name.toString()
         holder.email.text = userList[position].email.toString()
@@ -35,17 +31,9 @@ import androidx.recyclerview.widget.RecyclerView
         return userList.size
     }
         class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
-              val name = view.findViewById<TextView>(R.id.name)
+            val name = view.findViewById<TextView>(R.id.name)
             val email = view.findViewById<TextView>(R.id.email)
             val status = view.findViewById<TextView>(R.id.status)
-
-           /* fun bind(data : User) {
-                name.text = data.name
-                email.text = data.email
-                status.text = data.status
-            }*/
-
-
         }
 }
 

@@ -16,9 +16,9 @@ class SignIn : AppCompatActivity() {
     lateinit var signup : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val splashscreen= installSplashScreen()
+        val splashscreen= installSplashScreen() //splashscreen implementation
         super.onCreate(savedInstanceState)
-        Thread.sleep(2000)
+        Thread.sleep(2000)// for 2 seconds
         setContentView(R.layout.activity_sign_in)
 
         username = findViewById(R.id.etUsername)
@@ -30,7 +30,7 @@ class SignIn : AppCompatActivity() {
         var db = helper.readableDatabase
 
         signup.setOnClickListener {
-
+            //signup button on click
             val intent = Intent(this@SignIn,SignUp::class.java)
             startActivity(intent)
         }
@@ -39,6 +39,7 @@ class SignIn : AppCompatActivity() {
             var args = listOf<String>(username.text.toString(),password.text.toString()).toTypedArray()
             var rs = db.rawQuery("SELECT * FROM USERS WHERE UNAME=? AND PASSWORD =? ",args)
 
+                //once the credentials match  next activity starts
             if (rs.moveToNext()){
                 val intent = Intent(this@SignIn,MainActivity::class.java)
                 startActivity(intent)

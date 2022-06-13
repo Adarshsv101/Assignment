@@ -29,23 +29,23 @@ class SignUp : AppCompatActivity() {
         signup = findViewById(R.id.btnSignUp)
 
         var helper = MyDBHelper(applicationContext)
-        var db = helper.readableDatabase
+        var db = helper.readableDatabase //to read the data from database
         db.rawQuery("SELECT * FROM USERS",null)
 
 
 
         signup.setOnClickListener {
             var cv = ContentValues()
-
+            //insert only when password matches confirm password
             if(password.text.toString() == cnfpassword.text.toString()) {
                 cv.put("UNAME", username.text.toString())
                 cv.put("PASSWORD", cnfpassword.text.toString())
-                db.insert("USERS",null ,cv)
+                db.insert("USERS",null ,cv) //inserting into table
 
                 username.setText("")
                 password.setText("")
                 cnfpassword.setText("")
-                username.requestFocus()
+                username.requestFocus() // the cursor return to username
 
               val intent = Intent(this@SignUp,SignIn::class.java)
                 startActivity(intent)
